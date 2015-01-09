@@ -37,7 +37,7 @@
     var fit = function (el) {
       var compressor = kompressor || 1;
 
-      var resizer = settings.resizer ? settings.resizer(el, settings, compressor) : function () {
+      var resizer = settings.resizer ? settings.resizer(el, compressor, settings) : function () {
         el.style.fontSize = Math.max(Math.min(el.clientWidth / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)) + 'px';
       };
 
