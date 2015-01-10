@@ -13,9 +13,23 @@ The default setting works pretty well, but when it doesn't FitText has one setti
 ```html
 window.fitText( document.getElementById("responsive_headline"), 1.2 ); // turn the compressor up (font will shrink a bit more aggressively)
 window.fitText( document.getElementById("responsive_headline"), 0.8 ); // turn the compressor down (font will shrink less aggressively)
-``` 
+```
 This will hopefully give you a level of "control" that might not be pixel perfect, but scales smoothly & nicely.
+
+The resize function can be configured if needed. To use an alternative resize function, provide a function that returns the intended resize function as the `resizer` option.
+
+For example:
+```html
+var createResizer = function(el, compressor, options) {
+    return function() {
+        // This is the default resizer function, for example
+        el.style.fontSize = Math.max(Math.min(el.clientWidth / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)) + 'px';
+    }
+}
+window.fitText( document.getElementById("responsive_headline"), null, { resizer: createResizer });
+```
+In this example, the createResizer function will be invoked to prepare the returned function for use. Then, any time the resizing is to be performed, the new function will be used instead of the default.
 
 ### Thanks
 Thanks to Trent, Dave and Reagan for original FitText.js: https://github.com/davatron5000/FitText.js
-http://fittextjs.com/ 
+http://fittextjs.com/
