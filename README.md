@@ -16,6 +16,7 @@ window.fitText( document.getElementById("responsive_headline"), 0.8 ); // turn t
 ```
 This will hopefully give you a level of "control" that might not be pixel perfect, but scales smoothly & nicely.
 
+### Custom resizer function
 The resize function can be configured if needed. To use an alternative resize function, provide a function that returns the intended resize function as the `resizer` option.
 
 For example:
